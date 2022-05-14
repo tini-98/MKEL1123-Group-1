@@ -10,7 +10,12 @@ For this milestone, we
 
 ## Video links
 
+Link for the our milestone 1 demo:_
+
+
+Link for the STM32 with Blinky tutorial:_
 [Tutorial referred](https://youtu.be/hyZS2p1tW-g)
 
 ## Source code
+[Source code using C language](main.c)
 
