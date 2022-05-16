@@ -7,6 +7,8 @@ The purpose of this milestone is for us to familiarize with STM32 firmware devel
 We used the STM32 Nucleo-64 for this project in which the device is based on high-performance Arm® Cortex® -M4 32-bit RISC core operating at a frequency of up to 100 MHz. It incorporates high-speed embedded memories which is up to 512 Kbytes of Flash memory and 128 Kbytes of SRAM. The STM32 Nucleo-64 board does not require any separate probe as it integrates the ST-LINK/V2-1 debugger/programmer.
  
 ## Photo of the board
+_STM32 Nucleo-64 development board with STM32F411RE MCU_
+
 <img src="../images/Board-Nucleo-F411RE.png" height="450" >
 
 ## Video links
