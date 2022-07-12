@@ -2,17 +2,45 @@
 
 ## Overview
 
-The purpose of this milestone is to familiarize with STM32 firmware development and learn on verification of the STM32 board by creating and running Blinky program which blinks the LED at 1Hz. And by the end, students are also able to learn on reporting using Github and the use of markdown code.
-
-The STM32 Nucleo-64 is used for this project in which the device is based on high-performance Arm® Cortex® -M4 32-bit RISC core operating at a frequency of up to 100 MHz. It incorporates high-speed embedded memories which is up to 512 Kbytes of Flash memory and 128 Kbytes of SRAM. The STM32 Nucleo-64 board does not require any separate probe as it integrates the ST-LINK/V2-1 debugger/programmer.
-
-There are a few steps done in order to complete this project milestone. Firstly, the STM32Cube IDE was installed onto the PC. Then a USB cable was used to connect the board to the PC. Next, the Blinky program was created and then the program was developed onto the board. By running the program, students are able to observe and verify the results obtained. 
+The compiled code of the overall system is presented in this milestone. The overall system consists of 3 input devices which are the ultrasonic sensor, DHT22 sensor and water flow sensor. The outputs peripherals are LEDs, buzzer and LCD. TheFREERTOS and nodeMCU features should be used in this system to achieve a real-time operation. However, FREERTOS is not not used since there is only gradual changes in the input measured which can be handled using conditional looping. Meanwhile, nodeMCU is is not functioning well with the board. 
 
 ## Source code
 
-_The source is generated in C language:_ [Source code](main.c)
+_The source is generated in C language:_ [Source code](workspace_flood_detection_system.zip)
 
 ## Procedures
 
-1. https://www.digikey.com/en/maker/videos/shawn-hymel/getting-started-with-stm32-and-nucleo-part-1-introduction-to-stm32cubeide-and-blinky
-2. https://www.st.com/en/embedded-software/stm32cube-mcu-mpu-packages.html
+1. Create new workspace for the system
+2. Choose STM32F411RET6 and Nucleo board
+3. Once the workspace is created, change the settings accordingly.
+##### DHT22
+- Click RCC → High Speed Clock (HSE) to Crystal/Ceramic Resonator
+- Click Clock Configuration tab → HCLK (MHz) to 72
+- Click Pinout and Configuration tab
+- Click Timer → Click TIM1 →
+- Clock Source set to Internal Clock
+- Configuration → Parameter Settings →
+- Prescaler set to 71
+- Set PB7 GPIO_Output -> Change label to DHT22_Out
+##### Ultrasonic sensor
+- Set PA9 to GPIO_Output -> Change label to TRIG
+- Set PA8 to GPIO_Input -> Change label to ECHO
+##### Water flow sensor
+- Set PB0 to GPIO_EXTI0 
+##### LCD
+- Set PB9 to I2C1_SDA
+- Set PB8 to I2C1_SCL
+##### Buzzer
+- Set PA1 to GPIO_Output -> Change label to Buzzer
+##### LEDs
+- Set PA4 to GPIO_Output -> Change label to LED_Green
+- Set PA5 to GPIO_Output -> Change label to LED_Yellow
+- Set PA6 to GPIO_Output -> Change label to LED_Red
+4. The newly set configurations is saved to generate C code
+5. Cable was used to link the board with the STM32Cube IDE
+6. Before building the project, two additional library and source code are copied for the LCD called: 
+- i2c-lcd.h (Inc)
+- i2c-lcd.c (Src)
+7. Project is built and debugged until it is free of error
+8. Project is launched
+
